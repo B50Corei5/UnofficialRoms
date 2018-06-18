@@ -17,7 +17,7 @@
 $(call inherit-product, device/lenovo/kuntao/full_kuntao.mk)
 
 # Inherit some common CM stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/aim/config/common_full_phone.mk)
 
 # Boot animation
 TARGET_SCREEN_WIDTH := 1080
@@ -29,9 +29,16 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 
 BUILD_FINGERPRINT := Lenovo/kuntao_row/P2a42:7.0/NRD90N/P2a42_S244_170725_ROW:user/release-keys
 
+PRODUCT_PROPERTY_OVERRIDES +\
+    ro.ota.romname=AIM-ROM \
+    ro.ota.version=$(shell date -u +"%Y%m%d") \
+    ro.ota.manifest=https://raw.githubusercontent.com/AIMROM/OFFICIAL_DEVICES/O/kuntao.xml
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := kuntao
-PRODUCT_NAME := lineage_kuntao
+PRODUCT_NAME :=aim_kuntao
 PRODUCT_BRAND := Lenovo
 PRODUCT_MANUFACTURER := Lenovo
 PRODUCT_RELEASE_NAME := kuntao
+
+# Aim official
+AIM_BUILD_TYPE=OFFICIAL
